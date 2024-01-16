@@ -29,6 +29,6 @@ def send_data_saved_email(sender, instance, created, **kwargs):
 
         print(context, "======")
         # Render the email template
-        email_content = render_to_string('mail-templates/member-login-credentials.html', context)
+        email_content = render_to_string('templates/mail-templates/member-login-credentials.html', context)
         # Send the email
         send_mail(subject, message, from_email, recipient_list, html_message=email_content)
