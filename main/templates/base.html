@@ -1,0 +1,278 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      function toggleMobileMenu() {
+        var mobileMenu = document.getElementById("mobile-menu-2");
+        var mobileMenuButton = document.getElementById("mobile-menu-button");
+
+        if (mobileMenu.style.display === "block") {
+          mobileMenu.style.display = "none";
+          mobileMenuButton.innerHTML =
+            '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>';
+        } else {
+          mobileMenu.style.display = "block";
+          mobileMenuButton.innerHTML =
+            '<svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>';
+        }
+      }
+    </script>
+    <title>
+        {% block title %}
+        
+        {% endblock %} | antilia
+    </title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      /* CSS for the user avatar image */
+      .user-avatar {
+        width: 30px; /* Adjust the width as needed */
+        height: 30px; /* Adjust the height as needed */
+        border-radius: 50%; /* Makes the image round (for a circular avatar) */
+        object-fit: cover; /* Ensures the image covers the entire container */
+        border: 2px solid #ffffff; /* Add a white border around the image */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div class="2xl:container 2xl:mx-auto">
+      <div class=" rounded shadow-lg py-7 px-7" style="background-color: #fefce8;">
+        <nav class="flex justify-between">   
+            <img style="height: 35px; width: 35px;"
+              src=data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAKcApwMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABwECBAUGAwj/xABCEAABAwMBBAgCBggEBwAAAAABAAIDBAURBhIhMUEHExRRYXGBkSIyFSNigpKhFiRCQ1JTsdEzosHwNDVjdLLC8f/EABoBAQEAAgMAAAAAAAAAAAAAAAABBAUCAwb/xAAqEQEAAgECBAUDBQAAAAAAAAAAAQIDBBEFITFBBhJRcYEUQmETFiIyUv/aAAwDAQACEQMRAD8AnFERAREQEREBERAREQEREBERAREQEREBFTKqgIiICIiAiIgIiICIiAiKhQeFdVw0NJNVVMgjghYXveeQC4fo910/UVzrqOuaIpXvdNSMOMiPdlhxxI4+p7lpumTUmTHp+lkxvEtZs/5Wf+x9O9Rnbq2ottfT1tG7Ynp3h7Ce8f34Kbj6lRazTt4p77aKe4025szPiZzY7m0+RWzVBERAWmv9yqaZ9NQ2xjHXCseWxGX5ImtGXSOHMDI3cyQN3Fblc1qSRttvFvvFQD2NkctJUyY/wRIWlrz3DLME8toHhlBpKSqr6+cC23LUFUBL1ZuUcNN2UOBwfgdgloIwSB5FdTYLlU1bamluEbI6+jeGTiP5XggFr2534I5HgQRyWi0rPcLBaqW01tufLTU+Wx3KGaPqTFnIe7LgQcHfuWx01J9JXO53qEO7JU9VBSvPCVkYP1g8CXkDvAzzQdGiIgIiICIiAiIgIiIC1GqL5DYLJU3CYAmNuI2E/O8/K31K25UE9KupPpm9CgpZM0dA4ty07pJeDj6cPfvQcdV1U1bVzVVU/bnmeXyO7yV4oiiu86JtSi03c2uqfijrnAMJ4Mm4A/e4eynAHK+VASN7SWkcC3cR4hfQHR3qX9IbCx0zwa2mxFUjvPJ3qPzyqjrEREBWvYHtLXAEHcQRxVyING3SGnmydYLPSZ2trZ6sbOe/Z4fkt01oaAGjAHAdyuRAREQEREBERAREQERec0rIY3SSODWMaXOceAAQcr0lak/R+wvED9muq8xU/wBn+J3oPzwoB9ye8lb3WuoX6kv81YNoUzPq6Zp3YYDx8zx9fBaFRRERQFv9Eahfpu/xVZJNLJiKpaObCePpx91oE5oPqqKVksbJI3B7HAFrm7wQVeo06HtS9qoTYqp/19K0upyf24s8Puk+xCktckEREBERAREQEREBERAREQUPBRt0w6l7JQtsVLJieqG3ORxbFncPDaI9gV3l6udPaLXU19W7EMDC4/aPIDxJ3L5su1yqLvcqi4VhzNUP2iM5DRyaPADAQYioqqiiiIigIiIMu03GptNxp6+jdiaB+23ud3g+BBIX0nY7pT3m2U9wpHZhnZtDvB5g+IO5fMKkToh1L9H3E2WqfinrHF0JcdzZccPDaA9x4qwiaUVAcqqoIiICIiAiIgIiICIud1zqFmnLDNVgg1Lx1dM085CNx8hxPkgjrpg1J264NsdM89npHbVRg7nyY3N9AffyUdc1WSR8sjpJXF8j3FznHi4niVaooiIoCKqogIiqqKK5jnMe17HOY9py1zTvaRzVqIPojQWpG6jsEM7y3tkX1VS0bsPA447iN66VfO+gNRHTl/jllP6lUYiqR3Nzud90n2yvoZjg5gc0ggjII5qouREQEREBERAREKC15DRl2AO8r5+6RtSHUN/f1LiaKkzFTjO52/4nepHsApH6V9TfRNl+jqSTZra4FuQd7I8/EfXgPXuUHDGMDgpIqnPCqxjnvayNrnuccNDRkn0XV2bQdxrQJLg8UUR3lhGZCPLgPVY+fVYsEb5LbOdaWt0hySyaWgrKzHZKSebP8uMke6li2aTs1u2XMpGzSt39ZP8AEf7BbtrQxuy1oa3kAMALRZvEVI5Yqb+7KrpJ7yiOn0Zf595oREP+rK0f0JWdH0e3hwzJLSMPg9zv9FJ6Z7lr7eINVPSIh2/SUjqjQ9Hlzx/xdKT95eUnR9eGj4JqN/gXkf6KUhHI75I3u8gV6to6l3CB/ruXOnFuI26V3+EnBhjuhmp0df6ff2Ayjvie135ZytRVUlVSEiqppoSOPWMLf6r6AFtqj+5/MI+01EjdmSFr29xII/NZ+Limu+/DM+0OqcOLtZ88DB38f7KauiPUouNr+h6qTNXRN+rLjkvizgeezuHsrbn0fW+tDnG3Cnld+8psMPsNxXOxaKv+mLrDdbJtVfUP2uqI2HvZ+008jkeXktrh11cnK1ZrP5h0WxbdJTOix6KpFXTRztY9gkaHBsjS1w8CDwKyFnuoREQEREBY9dVw0NHNVVLwyGFhe9x5ALIUT9MOoTM+LTdCXPe4tkqgwEk82R/0J9EmduciPtS3qa/3qouU4IDziNh/YjHyj23+ZKzdO6Tr70GzOHZqM/vnje8fZHPz4LpdL6IZT7FZemCScb2U/FrD9rvPhwXb4AGBwHDC81xHjsUn9PB19Wbh02/O7V2WwW6zR4o4B1mPimf8T3evLyGAtoiyqShlqsFoxH/EV5qIz6vJ3tMsufLjj0YvPHNZUFvqZ8bLNkd79y3FLQwU28N2n/xO4rMGOS9DpfD0bRbPPxDEvq5+1q4bPGN8r3O8BuCzYqKni+WJvtlZKLe4dBpsP9KQxbZL26ytDQOAwq4VUWXtEOC3CrhVRUUwqYVjKmCSV0TJo3SM+ZgeCW+YVG1VO6d0DZozM0ZMYcNoDy9R7qbD1AwqoioIiICIrXHCDWaiu7bLapqssMso+GGFvGWQ/K0eZXB6c0+6jlkul1e2ou9Q4vlkxkRk8Q3+mfRdNdi2suLJH72U+RCDvAceLvPkO4Z715LyHGOKzeZw4p5R1lsNPh2/lYT/AH5otxaqAAComBz+y0jh4rTaLR5NXk8lWRlyRjjeVlvtm1iSpG7kz+63LWhoAAwByCqFRxDQS44A/Je80ejxaWnlpHy1V7zed5Rx0kz190v1v07aaqenlEMtXNJBK5hADXbIOyRuOCPMhb/o3u7rvpGille59RA3qJnOOXFzd2T4kYK5PSGoLRNqq/3+7XGnp3TS9npGzSAHqhzHgQG/mvbo+uFHRa2vdooaqKehrHdppXRuyM8SPPDsfdWW4JJjq4JZnQRzxOlZ80bXgub5jkr5ZmQxmSZ7WMaPic44A8yo51LG3TXSVa780COmuY7LUu+1uG/2YfurM6V6iWqorfp2kP6xdalrDj+AEZOO7OPYqjt+1wCDrzPEIePWbQ2cea8KO8W2ukMdFcKSokbxbDO15HoCtPebHpxlho6O9thbbqANEbZJCxm4YGcEZ8lG2savRsdHHVaPaKa50srXRyUkL2McM78nGPH/AOoJuysF14tgqeyuuNI2pJwITO3b/DnK5HpD1FV0GjaSShcY6y47EbXNOC3LcuI7u71WRbujbT0FrZT11E2qqS362pe522XcyDncg1ukGtHSpqwhoyWt3447mq2ybLOmi/OOyMUW8/dg4rG6OKOS36/1FRyzvndBGGCWQ5c5uRs58dnA9FjyWkXrpdvVFNNJHTOga6obG7ZMrAyL4CRvwTs58lBJtNdbfVzOhpK6lnlb80cUzXOHmAVmBRR0k6YoNM2unvunIewVdNO1uY3OwQc44nvA8xlSjQzdoo4J8Y62Nr8eYyqPdERAWvu1V1EAa0/G/IHgtgvOSJj8bTA4jvGV0anHfJjmtJ2me7lWYid5clnvIyq/74rquzQ/ymfhCdmh/ks/CvM/tvJ/uGZ9ZHo0lqpOvl6x/wDhsPuVvwMDcjGNYMMaAO4KuFvtBoa6PF5I5z3li5ck5LbyquX6SL02yaQrqgSBksjepiP2nbs+gyfRdQvKengqGhtRDHK0HID2hwB9Vnutyej9H2um01QMr7ZSy1ToQ+V0kQcdp2/GT3Zx6Ln+kKgp9K3axajtlPDTQwVHVVLY27LSDz/Dtj1ClADCsmghnZ1c8TJGfwvaHD2KDl+kO0s1Bo+pbABJJEwVNO4d4BO7zaSPVc1oKok1fqn9IqgF0Vuoo6aLJ3dcRl7vPefxBSeI2hgY0YaBgAbgArIKaCnaW08TImk5IjaGjPfgII26T3xxar03LeWudY2ud1o4t288/wDL6Arw6SdS2i4aXntljmjqnN2JJTTt+CnjB3Fx4DJwAPNSfUUsFVE6GphjmjdxZI0OB9CvKC2UFPAaeCip44CcmJkTQ0nyAwg4TXVoqbvoG2VFua59TRNinY1u8uGxg4HPG4+iz7f0m6bntTKqsrRTVDRiSmc0l+3zDRz3rtWRsY0NY0Na0YAAwAsQWi2iq7WKClFTx64Qt2/fGUEd9HlRNU9IOoKmqgNPNUwNmEDvmYxxGzkd+zjPqsmxOaemq/AOGexDdn7MCkNlPCyV0rYmCV3zPDRtHzKNpoGzOnbDGJnDDpA0bRHiUHE9NBA0PLkgfrEXE+K66y/8nof+3j/8QsmeCKoZsTxMkZnOy9ocPYq9jWsaGtADRuAHJBVERAREQEREBERAREQEREBERAREQEREBERAREQEREH/2Q== >
+              <div class="flex items-center space-x-3 lg:pr-16 pr-6">
+            <h2 class="font-normal text-2xl leading-6 text-gray-800">
+              AVADH CAROLINA
+            </h2>
+          </div>
+
+          <!-- For medium and plus sized devices -->
+          <ul class="hidden md:flex flex-auto space-x-2">
+            <li
+              onclick="selected()"
+              >
+              <a href="{% url 'dashboard_view' %}"class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-gray-600 border border-white bg-gray-50 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded"
+              >Dashboard</a>
+            </li>
+            <li
+              onclick="selected()"
+            >
+              <a href="{% url 'services_view' %}" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-gray-600 border border-white bg-gray-50 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded"
+              >Services</a>
+            </li>
+            <li
+              onclick="selected()"
+            > 
+              <a href="{% url 'events_view' %}"class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-gray-600 border border-white bg-gray-50 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded"
+              >Events</a>
+            </li>
+            <li
+              onclick="selected()"
+            > 
+            <a href="{% url 'gallery_view' %}"class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-gray-600 border border-white bg-gray-50 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded"
+            >Gallery</a>
+            </li>
+            <li
+              onclick="selected()"
+            >
+            <a href="{% url 'emergency_contact_view' %}"class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-gray-600 border border-white bg-gray-50 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded"
+            >Emergency contact</a>
+            </li>
+            <li
+              onclick="selected()"
+            >
+            <a href="{% url 'news_view' %}"class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-gray-600 border border-white bg-gray-50 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded"
+            >Nwes</a>
+            </li>
+          </ul>
+          <div class="flex space-x-5 justify-center items-center pl-2">
+            <div
+              class="relative cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+            >
+            <a href="{% url 'profile_view' %}">
+              <img
+                src="https://img.freepik.com/free-photo/cheerful-indian-businessman-smiling-closeup-portrait-jobs-career-campaign_53876-129417.jpg?w=740&t=st=1695803015~exp=1695803615~hmac=70de2eb76e010f2e91fa29e207f8522c18fdf3e376eb9564f268f893e2996432"
+                class="user-avatar mr-3 h-6 sm:h-9"
+                alt="Flowbite Logo"
+              />
+            </a>
+            </div>
+          </div>
+        </nav>
+        <!-- for smaller devcies -->
+
+        <div class="block md:hidden w-full mt-5">
+          <div
+            onclick="selectNew()"
+            class="cursor-pointer px-4 py-3 bg-color-#fcd34d text-white rounded flex justify-between items-center w-full">
+            <div class="flex space-x-2">
+              <span id="s1" class="font-semibold text-sm leading-3 hidden"
+                >Selected:
+              </span>
+              <p
+                id="textClicked"
+                class="font-normal text-sm leading-3 focus:outline-none hover:bg-gray-800 duration-100 cursor-pointer"
+              >
+                Dashboard
+              </p>
+            </div>
+            <svg
+              id="ArrowSVG"
+              class="transform"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="C:\Users\HP\Downloads\28.svg"
+            >
+              <path
+                d="M6 9L12 15L18 9"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="relative">
+            <ul
+              id="list"
+              class="hidden font-normal text-base leading-4 absolute top-2 w-full rounded shadow-md"
+            >
+              <li
+                onclick="selectedSmall()"
+                class="px-4 py-3 text-gray-600 bg-gray-50 border border-gray-50 focus:outline-none focus:bg-gray-100 hover:bg-gray-100 duration-100 cursor-pointer text-xs leading-3 font-normal"
+              >
+                Services
+              </li>
+              <li
+                onclick="selectedSmall()"
+                class="px-4 py-3 text-gray-600 bg-gray-50 border border-gray-50 focus:outline-none focus:bg-gray-100 hover:bg-gray-100 duration-100 cursor-pointer text-xs leading-3 font-normal"
+              >
+                Event
+              </li>
+              <li
+                onclick="selectedSmall()"
+                class="px-4 py-3 text-gray-600 bg-gray-50 border border-gray-50 focus:outline-none focus:bg-gray-100 hover:bg-gray-100 duration-100 cursor-pointer text-xs leading-3 font-normal"
+              >
+                Gallery
+              </li>
+              <li
+                onclick="selectedSmall()"
+                class="px-4 py-3 text-gray-600 bg-gray-50 border border-gray-50 focus:outline-none focus:bg-gray-100 hover:bg-gray-100 duration-100 cursor-pointer text-xs leading-3 font-normal"
+              >
+                Emergency contact
+              </li>
+              <li
+                onclick="selectedSmall()"
+                class="px-4 py-3 text-gray-600 bg-gray-50 border border-gray-50 focus:outline-none focus:bg-gray-100 hover:bg-gray-100 duration-100 cursor-pointer text-xs leading-3 font-normal"
+              >
+                Suggestion
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% block body %}
+    <h1 class="text-center my-5">page-content</h1>
+    {% endblock %}
+
+    <footer class="text-gray-600 body-font" style="background-color: #fefce8;">
+      <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+        <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+              <img style="height: 35px; width: 35px;"
+              src=data:image/jpeg;base64,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 >
+          <span class="ml-3 text-xl">AVADH CAROLINA</span>
+        </a>
+        <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2023 Tops Technology Pvt. Ltd. —
+          <a href="#" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@Smit Akbari</a>
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+          <a class="text-gray-500">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+              <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </footer>
+   
+    
+    <script>
+      function selected() {
+        var targeted = event.target;
+        var clicked = targeted.parentElement;
+
+        var child = clicked.children;
+        console.log(child);
+
+        for (let i = 0; i < child.length; i++) {
+          if (child[i].classList.contains("text-white")) {
+            console.log(child[i]);
+            child[i].classList.remove("text-white", "bg-#fcd34d");
+            child[i].classList.add(
+              "text-gray-600",
+              "bg-gray-50",
+              "border",
+              "border-white"
+            );
+          }
+        }
+
+        targeted.classList.remove(
+          "text-gray-600",
+          "bg-gray-50",
+          "border",
+          "border-white"
+        );
+        targeted.classList.add("text-white", "bg-#fcd34d");
+      }
+
+      function selectNew() {
+        var newL = document.getElementById("list");
+        newL.classList.toggle("hidden");
+
+        document.getElementById("ArrowSVG").classList.toggle("rotate-180");
+      }
+
+      function selectedSmall() {
+        var text = event.target.innerText;
+        var newL = document.getElementById("list");
+        var newText = document.getElementById("textClicked");
+        newL.classList.add("hidden");
+        document.getElementById("ArrowSVG").classList.toggle("rotate-180");
+        newText.innerText = text;
+
+        document.getElementById("s1").classList.remove("hidden");
+      }
+    </script>
+  </body>
+</html>

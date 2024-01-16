@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="bg-gradient-to-r from-blue-100 to-red-100 flex items-center justify-center h-screen"
+  >
+    <div class="bg-white p-8 rounded-md shadow-md max-w-md w-full">
+      <div
+        class="flex justify-center p-0 border-solid border-gray-300 rounded mb-6"
+      >
+      
+      <img style="height: 80px; width: 80px;"
+      src=data:image/jpeg;base64,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 >
+        
+      <path
+        d="M1 17H0H1ZM7 17H6H7ZM17 27V28V27ZM27 17H28H27ZM17 0C12.4913 0 8.1673 1.79107 4.97918 4.97918L6.3934 6.3934C9.20644 3.58035 13.0218 2 17 2V0ZM4.97918 4.97918C1.79107 8.1673 0 12.4913 0 17H2C2 13.0218 3.58035 9.20644 6.3934 6.3934L4.97918 4.97918ZM0 17C0 21.5087 1.79107 25.8327 4.97918 29.0208L6.3934 27.6066C3.58035 24.7936 2 20.9782 2 17H0ZM4.97918 29.0208C8.1673 32.2089 12.4913 34 17 34V32C13.0218 32 9.20644 30.4196 6.3934 27.6066L4.97918 29.0208ZM17 34C21.5087 34 25.8327 32.2089 29.0208 29.0208L27.6066 27.6066C24.7936 30.4196 20.9782 32 17 32V34ZM29.0208 29.0208C32.2089 25.8327 34 21.5087 34 17H32C32 20.9782 30.4196 24.7936 27.6066 27.6066L29.0208 29.0208ZM34 17C34 12.4913 32.2089 8.1673 29.0208 4.97918L27.6066 6.3934C30.4196 9.20644 32 13.0218 32 17H34ZM29.0208 4.97918C25.8327 1.79107 21.5087 0 17 0V2C20.9782 2 24.7936 3.58035 27.6066 6.3934L29.0208 4.97918ZM17 6C14.0826 6 11.2847 7.15893 9.22183 9.22183L10.636 10.636C12.3239 8.94821 14.6131 8 17 8V6ZM9.22183 9.22183C7.15893 11.2847 6 14.0826 6 17H8C8 14.6131 8.94821 12.3239 10.636 10.636L9.22183 9.22183ZM6 17C6 19.9174 7.15893 22.7153 9.22183 24.7782L10.636 23.364C8.94821 21.6761 8 19.3869 8 17H6ZM9.22183 24.7782C11.2847 26.8411 14.0826 28 17 28V26C14.6131 26 12.3239 25.0518 10.636 23.364L9.22183 24.7782ZM17 28C19.9174 28 22.7153 26.8411 24.7782 24.7782L23.364 23.364C21.6761 25.0518 19.3869 26 17 26V28ZM24.7782 24.7782C26.8411 22.7153 28 19.9174 28 17H26C26 19.3869 25.0518 21.6761 23.364 23.364L24.7782 24.7782ZM28 17C28 14.0826 26.8411 11.2847 24.7782 9.22183L23.364 10.636C25.0518 12.3239 26 14.6131 26 17H28ZM24.7782 9.22183C22.7153 7.15893 19.9174 6 17 6V8C19.3869 8 21.6761 8.94821 23.364 10.636L24.7782 9.22183ZM10.3753 8.21913C6.86634 11.0263 4.86605 14.4281 4.50411 18.4095C4.14549 22.3543 5.40799 26.7295 8.13176 31.4961L9.86824 30.5039C7.25868 25.9371 6.18785 21.9791 6.49589 18.5905C6.80061 15.2386 8.46699 12.307 11.6247 9.78087L10.3753 8.21913ZM23.6247 25.7809C27.1294 22.9771 29.1332 19.6127 29.4958 15.6632C29.8549 11.7516 28.5904 7.41119 25.8682 2.64741L24.1318 3.63969C26.7429 8.20923 27.8117 12.1304 27.5042 15.4803C27.2001 18.7924 25.5372 21.6896 22.3753 24.2191L23.6247 25.7809Z"
+        fill="#1F2937"
+      />
+    </svg>
+      </div>
+      <h2 class="text-2xl font-semibold mb-4">Login to your account</h2>
+
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+              <div class="{% if message.tags == 'success' %}bg-green-100 border-l-4 border-green-500 text-green-700{% elif message.tags == 'info' %}bg-blue-100 border-l-4 border-blue-500 text-blue-700{% elif message.tags == 'warning' %}bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700{% elif message.tags == 'error' %}bg-red-100 border-l-4 border-red-500 text-red-700{% else %}bg-gray-100 border-l-4 border-gray-500 text-gray-700{% endif %} p-4 mb-4 relative" role="alert">
+                  <div class="flex justify-between items-center">
+                      <p class="flex-grow">{{ message }}</p>
+                      <button type="button" class="text-gray-500 hover:text-gray-700 focus:outline-none mt-1 mr-1" onclick="this.parentElement.parentElement.style.display='none'">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 11-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                          </svg>
+                      </button>
+                  </div>
+              </div>
+          {% endfor %}
+      </ul>
+      {% endif %}
+      
+
+
+
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-4">
+          <label for="email" class="block mb-2 font-semibold"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="w-full p-2 border hover:border-blue-500 rounded-md"
+            placeholder="Example@gmail.com"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="password" class="block mb-2 font-semibold"
+            >Password</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="w-full p-2 border hover:border-blue-500 rounded-md"
+            placeholder="********"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-400"
+        >
+          Login
+        </button>
+      </form>
+      <p class="mt-4 text-center">
+        Forgot password?
+        <a href="{% url 'forgot_password' %}" class="text-yellow-700"
+        >Recover it</a
+      >
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP Verification</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="bg-gradient-to-r from-blue-100 to-red-100 flex items-center justify-center h-screen py-8" style="margin-top: 100px;"
+  >
+    <div class="bg-white p-8 rounded-md shadow-md max-w-md w-full my-10">
+      <div class="flex justify-center p-0 border border-gray-300 rounded mb-6">
+        <!-- Your logo or image here -->
+      </div>
+      <h2 class="text-2xl  font-semibold mb-4">
+        OTP Verification
+      </h2>
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+              <div class="{% if message.tags == 'success' %}bg-green-100 border-l-4 border-green-500 text-green-700{% elif message.tags == 'info' %}bg-blue-100 border-l-4 border-blue-500 text-blue-700{% elif message.tags == 'warning' %}bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700{% elif message.tags == 'error' %}bg-red-100 border-l-4 border-red-500 text-red-700{% else %}bg-gray-100 border-l-4 border-gray-500 text-gray-700{% endif %} p-4 mb-4 relative" role="alert">
+                  <div class="flex justify-between items-center">
+                      <p class="flex-grow">{{ message }}</p>
+                      <button type="button" class="text-gray-500 hover:text-gray-700 focus:outline-none mt-1 mr-1" onclick="this.parentElement.parentElement.style.display='none'">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 11-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                          </svg>
+                      </button>
+                  </div>
+              </div>
+          {% endfor %}
+      </ul>
+      {% endif %}
+
+      <p class="mb-4 ">
+        An OTP has been sent to your email. Please enter the OTP to continue.
+      </p>
+      <form action="{% url 'otp_verify' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-4">
+          <input
+            type="hidden"
+            id="email"
+            name="email"
+            value="{{email}}"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="otp" class="block  mb-2 font-semibold"
+            >OTP</label
+          >
+          <input
+            type="text"
+            id="otp"
+            name="otp"
+            class="w-full  p-2 border hover:border-blue-500 rounded-md"
+            placeholder="Enter OTP"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="password" class="block  mb-2 font-semibold"
+            >New password</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="new_password"
+            class="w-full  p-2 border hover:border-blue-500 rounded-md"
+            placeholder="********"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="cpassword" class="block  mb-2 font-semibold"
+            >Confirm password</label
+          >
+          <input
+            type="password"
+            id="cpassword"
+            name="confirm_password"
+            class="w-full  p-2 border hover:border-blue-500 rounded-md"
+            placeholder="********"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-400"
+        >
+          Verify OTP
+        </button>
+      </form>
+      <p class="mt-4 text-center">
+        Didn't receive the OTP? <a href="#" class="text-yellow-700">Resend</a>
+      </p>
+    </div>
+  </body>
+</html>

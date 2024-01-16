@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Services
+{% endblock %}
+
+{% block body %}
+<div class="container mx-auto px-4 py-3">
+    <nav class="flex" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">
+            <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+              <svg class="w-3 h-3 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+              </svg>
+              <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">Services</a>
+            </div>
+          </li>
+          <!-- <li aria-current="page">
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+              </svg>
+              <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">Flowbite</span>
+            </div>
+          </li> -->
+        </ol>
+    </nav>
+
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-12 mx-auto flex flex-wrap ">
+        <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-4 w-full mt-10 md:mt-0">
+          <form action="{% url 'addEvent' %}" method="post">
+            {% csrf_token %}
+          <h2 class="text-yellow-400 text-lg font-medium title-font mb-5">Club House Booking</h2>
+          <div class="relative mb-4">
+            <label for="full-name" class="leading-7 text-sm text-gray-600">Event's name</label>
+            <input type="text" id="full-name" name="event_name" placeholder="Ex. Marriage" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+          <div class="relative mb-4">
+            <label for="start_date" class="leading-7 text-sm text-gray-600">From date</label>
+            <input type="date" id="start_date" name="from_date" style="color: gray !important;" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+          <div class="relative mb-4">
+            <label for="end_date" class="leading-7 text-sm text-gray-600">To date</label>
+            <input type="date" id="end_date" name="to_date" style="color: gray !important;" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+          <div class="relative mb-4">
+            <label for="content" class="leading-7 text-sm text-gray-600">Description</label>
+            <textarea name="content" id="" cols="30" rows="4" style="color: gray !important;" placeholder="Short description of your event" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
+          </div>
+          <button type="submit" class="text-white bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-200 rounded text-lg">Submit</button>
+          </form>
+        </div>
+        <div class="lg:w-3/5 md:w-1/2 md:pl-16 lg:pr-0 pr-0">
+          <section class="text-gray-600 body-font">
+            <div class="container px-5 py-6 mx-auto">
+              <div class="text-center mb-20">
+                <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">Services Provided by <span class="text-yellow-400">"Antilia"</span></h1>
+              </div>
+              <div class="flex flex-wrap lg:w-full sm:mx-auto sm:mb-2 -mx-2">
+                {% for service in services %}
+                <div class="p-2  w-full">
+                  <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-yellow-400 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                      <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                      <path d="M22 4L12 14.01l-3-3"></path>
+                    </svg>
+                    <span class="title-font font-medium">{{service|title}}</span>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </section>
+        </div>
+        
+        
+      </div>
+    </section>
+
+    <section>
+      <div class="container px-5 py-6 mx-auto flex flex-wrap ">
+        <h1 class="title-font font-medium text-3xl text-gray-900 my-4 text-yellow-400">Bookings</h1>
+          <div class="overflow-x-auto w-full">
+            <table class="min-w-full border-collapse table-auto">
+              <thead>
+                <tr>
+                  <th class="px-4 py-2 text-left bg-gray-100 border-b">Member</th>
+                  <th class="px-4 py-2 text-left bg-gray-100 border-b">Event</th>
+                  <th class="px-4 py-2 text-left bg-gray-100 border-b">Date</th>
+                  <th class="px-4 py-2 text-left bg-gray-100 border-b">Days</th>
+                  <th class="px-4 py-2 text-left bg-gray-100 border-b">Status</th>
+                  <th class="px-4 py-2 text-left bg-gray-100 border-b">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for booking in bookings %}
+                <tr>
+                  <td class="px-4 py-2 border-b">{{booking.member_id.first_name|title}} {{booking.member_id.last_name|title}}</td>
+                  <td class="px-4 py-2 border-b">{{booking.event_name|title}}</td>
+                  <td class="px-4 py-2 border-b">{{booking.from_date}}</td>
+                  <td class="px-4 py-2 border-b">{{booking.total_days}}</td>
+                  <td class="px-4 py-2 border-b">{{booking.status}}</td>
+                  <td class="px-4 py-2 border-b flex">
+                    <a href="{% url 'update_event' booking_id=booking.id %}">
+                      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0,0,256,256"
+                      style="fill:#000000;">
+                      <g fill="#445cb9" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(2,2)"><path d="M79.33594,15.66797c-1.27148,-0.0457 -2.56094,0.09414 -3.83594,0.43164c-3.4,0.9 -6.20039,3.09961 -7.90039,6.09961l-3.59961,6.5c-0.8,1.4 -0.30039,3.30156 1.09961,4.10156l17.30078,10c0.5,0.3 1,0.39844 1.5,0.39844c0.3,0 0.49883,0.00039 0.79883,-0.09961c0.8,-0.2 1.40078,-0.70039 1.80078,-1.40039l3.69922,-6.5c1.7,-3 2.20078,-6.49844 1.30078,-9.89844c-0.9,-3.4 -3.09961,-6.20039 -6.09961,-7.90039c-1.875,-1.0625 -3.94531,-1.65625 -6.06445,-1.73242zM60.09766,38.12695c-0.96875,0.07422 -1.89844,0.59766 -2.39844,1.47266l-30.19922,52.40039c-3.4,5.8 -5.29922,12.30039 -5.69922,18.90039l-0.80078,12.90039c-0.1,1.1 0.5,2.19883 1.5,2.79883c0.5,0.3 1,0.40039 1.5,0.40039c0.6,0 1.19922,-0.2 1.69922,-0.5l10.80078,-7.09961c5.5,-3.7 10.2,-8.60039 13.5,-14.40039l30.30078,-52.40039c0.8,-1.4 0.29844,-3.29961 -1.10156,-4.09961c-1.4,-0.8 -3.29961,-0.30039 -4.09961,1.09961l-30.29883,52.40039c-2.9,4.9 -6.90117,9.20039 -11.70117,12.40039l-5.79883,3.79883l0.39844,-6.89844c0.3,-5.7 2.00039,-11.30078 4.90039,-16.30078l30.30078,-52.40039c0.8,-1.4 0.30039,-3.29961 -1.09961,-4.09961c-0.525,-0.3 -1.12188,-0.41758 -1.70312,-0.37305zM49,121c-1.7,0 -3,1.3 -3,3c0,1.7 1.3,3 3,3h40c1.7,0 3,-1.3 3,-3c0,-1.7 -1.3,-3 -3,-3zM104,121c-1.65685,0 -3,1.34315 -3,3c0,1.65685 1.34315,3 3,3c1.65685,0 3,-1.34315 3,-3c0,-1.65685 -1.34315,-3 -3,-3z"></path></g></g>
+                      </svg></a>
+                    <a href="{% url 'delete_event' booking_id=booking.id %}">
+                      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0,0,256,256"
+                        style="fill:#000000;">
+<g fill=" #445cb9" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(3.2,3.2)"><path d="M37,6c-1.64497,0 -3,1.35503 -3,3v1h-9.52734c-1.89168,0 -3.62621,1.07202 -4.47266,2.76367l-1.11719,2.23633h-3.38281c-1.92119,0 -3.5,1.57881 -3.5,3.5c0,1.92119 1.57881,3.5 3.5,3.5h0.58008l3.61719,43.41602c0.21549,2.58219 2.3924,4.58398 4.98438,4.58398h30.63867c2.59122,0 4.76693,-2.0018 4.98242,-4.58398l3.61719,-43.41602h0.58008c1.92119,0 3.5,-1.57881 3.5,-3.5c0,-1.92119 -1.57881,-3.5 -3.5,-3.5h-3.38281l-1.11719,-2.23633c-0.84645,-1.69165 -2.58098,-2.76367 -4.47266,-2.76367h-9.52734v-1c0,-1.64497 -1.35503,-3 -3,-3zM37,8h6c0.56503,0 1,0.43497 1,1v1h-8v-1c0,-0.56503 0.43497,-1 1,-1zM24.47266,12h10.35938c0.10799,0.01785 0.21818,0.01785 0.32617,0h9.67383c0.10799,0.01785 0.21818,0.01785 0.32617,0h10.36914c1.13832,0 2.17404,0.63986 2.68359,1.6582l1.67187,3.3418h4.61719c0.84081,0 1.5,0.65919 1.5,1.5c0,0.84081 -0.65919,1.5 -1.5,1.5h-0.41406h-48.17188h-0.41406c-0.84081,0 -1.5,-0.65919 -1.5,-1.5c0,-0.84081 0.65919,-1.5 1.5,-1.5h4.61719l1.67187,-3.3418c0.50955,-1.01835 1.54527,-1.6582 2.68359,-1.6582zM24,15c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1zM28,15c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1zM32,15c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1zM36,15c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1zM40,15c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1zM44,15c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1zM48,15c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1zM52,15c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1zM56,15c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1zM18.08594,22h43.82812l-3.60547,43.24805c-0.13051,1.56381 -1.4195,2.75195 -2.98828,2.75195h-30.63867c-1.57003,0 -2.85973,-1.18814 -2.99023,-2.75195zM54.76953,26.02734l-0.6875,0.57617l-0.08008,0.3418l-0.00586,0.09961l0.35742,0.82227l0.87305,0.20508l0.68555,-0.57617l0.08008,-0.3418l0.00586,-0.09961l-0.35742,-0.82227zM39.7168,26.04102l-0.6543,0.61133l-0.0625,0.34766v0.09961l0.40234,0.80078l0.88086,0.1582l0.6543,-0.61133l0.0625,-0.34766v-0.09961l-0.40234,-0.80078zM24.66602,26.05859l-0.62109,0.64648l-0.04297,0.34961l0.00586,0.09961l0.44336,0.77734l0.88867,0.11133l0.62109,-0.64648l0.04297,-0.35156l-0.00586,-0.09961l-0.44336,-0.77734zM54.54688,30.12109l-0.68555,0.57617l-0.08203,0.34375l-0.00391,0.09961l0.35742,0.82031l0.87109,0.20508l0.6875,-0.57422l0.08008,-0.34375l0.00586,-0.09961l-0.35742,-0.82227zM39.7168,30.14063l-0.6543,0.61328l-0.0625,0.3457v0.09961l0.40234,0.80273l0.88086,0.15625l0.6543,-0.61133l0.0625,-0.34766v-0.09961l-0.40234,-0.80078zM24.88672,30.15234l-0.62109,0.64648l-0.04297,0.34961l0.00586,0.09961l0.44336,0.77734l0.88867,0.11133l0.62109,-0.64648l0.04297,-0.34961l-0.00391,-0.09961l-0.44531,-0.7793zM54.32617,34.21484l-0.6875,0.57617l-0.08008,0.34375l-0.00586,0.09961l0.35742,0.82031l0.87305,0.20703l0.6875,-0.57617l0.08008,-0.34375l0.00586,-0.09961l-0.35742,-0.82227zM39.7168,34.24023l-0.6543,0.61328l-0.0625,0.3457v0.10156l0.40234,0.80078l0.88086,0.1582l0.6543,-0.61328l0.0625,-0.3457v-0.10156l-0.40234,-0.80078zM25.10742,34.24609l-0.61914,0.64648l-0.04492,0.34961l0.00586,0.09961l0.44336,0.77734l0.89063,0.11133l0.61914,-0.64648l0.04492,-0.34961l-0.00586,-0.09961l-0.44531,-0.7793zM54.10547,38.30859l-0.6875,0.57617l-0.08008,0.34375l-0.00586,0.09961l0.35742,0.82227l0.87305,0.20508l0.68555,-0.57617l0.08203,-0.34375l0.00391,-0.09961l-0.35742,-0.82227zM25.32813,38.33984l-0.61914,0.64648l-0.04297,0.34961l0.00391,0.09961l0.44531,0.7793l0.88867,0.10938l0.62109,-0.64648l0.04297,-0.34961l-0.00586,-0.09961l-0.44336,-0.7793zM39.7168,38.3418l-0.6543,0.61133l-0.0625,0.34766v0.09961l0.40234,0.80078l0.88086,0.1582l0.6543,-0.61328l0.0625,-0.3457v-0.09961l-0.40234,-0.80273zM53.88281,42.40234l-0.68555,0.57617l-0.08008,0.34375l-0.00586,0.09961l0.35742,0.82227l0.87109,0.20508l0.6875,-0.57617l0.08008,-0.34375l0.00586,-0.09961l-0.35742,-0.82031zM25.55078,42.43359l-0.62109,0.64648l-0.04297,0.34961l0.00586,0.09961l0.44336,0.7793l0.88867,0.10938l0.62109,-0.64648l0.04297,-0.34961l-0.00586,-0.09961l-0.44336,-0.7793zM39.7168,42.44141l-0.6543,0.61133l-0.0625,0.34766v0.09961l0.40234,0.80078l0.88086,0.1582l0.6543,-0.61133l0.0625,-0.34766v-0.09961l-0.40234,-0.80078zM53.66211,46.49805l-0.68555,0.57422l-0.08203,0.34375l-0.00586,0.09961l0.35938,0.82227l0.87109,0.20508l0.6875,-0.57617l0.08008,-0.34375l0.00586,-0.09961l-0.35742,-0.82031zM25.77148,46.52734l-0.62109,0.64648l-0.04297,0.34961l0.00586,0.09961l0.44336,0.7793l0.89063,0.10938l0.61914,-0.64648l0.04492,-0.34961l-0.00586,-0.09961l-0.44531,-0.77734zM39.7168,46.54102l-0.6543,0.61133l-0.0625,0.34766v0.09961l0.40234,0.80078l0.88086,0.1582l0.6543,-0.61133l0.0625,-0.34766v-0.09961l-0.40234,-0.80078zM53.44141,50.5918l-0.6875,0.57617l-0.08008,0.3418l-0.00586,0.09961l0.35742,0.82227l0.87305,0.20508l0.68555,-0.57617l0.08203,-0.3418l0.00391,-0.10156l-0.35742,-0.82031zM25.99219,50.62109l-0.61914,0.64648l-0.04297,0.34961l0.00391,0.10156l0.44531,0.77734l0.88867,0.10938l0.62109,-0.64648l0.04297,-0.34961l-0.00586,-0.09961l-0.44336,-0.77734zM39.7168,50.64063l-0.6543,0.61328l-0.0625,0.3457v0.09961l0.40234,0.80273l0.88086,0.15625l0.6543,-0.61133l0.0625,-0.34766v-0.09961l-0.40234,-0.80078zM53.21875,54.68555l-0.68555,0.57617l-0.08008,0.3418l-0.00586,0.09961l0.35742,0.82227l0.87305,0.20508l0.68555,-0.57617l0.08008,-0.3418l0.00586,-0.09961l-0.35742,-0.82227zM26.21484,54.7168l-0.62109,0.64648l-0.04297,0.34961l0.00586,0.09961l0.44336,0.77734l0.88867,0.11133l0.62109,-0.64648l0.04297,-0.35156l-0.00586,-0.09961l-0.44336,-0.77734zM39.7168,54.74023l-0.6543,0.61328l-0.0625,0.3457v0.10156l0.40234,0.80078l0.88086,0.1582l0.6543,-0.61328l0.0625,-0.3457v-0.10156l-0.40234,-0.80078zM52.99805,58.7793l-0.68555,0.57617l-0.08203,0.3418l-0.00391,0.10156l0.35742,0.82031l0.87109,0.20508l0.6875,-0.57422l0.08008,-0.34375l0.00586,-0.09961l-0.35742,-0.82227zM26.43555,58.81055l-0.62109,0.64648l-0.04297,0.34961l0.00586,0.09961l0.44336,0.77734l0.89063,0.11133l0.61914,-0.64648l0.04297,-0.34961l-0.00391,-0.10156l-0.44531,-0.77734zM39.7168,58.8418l-0.6543,0.61133l-0.0625,0.34766v0.09961l0.40234,0.80078l0.88086,0.1582l0.6543,-0.61328l0.0625,-0.3457v-0.09961l-0.40234,-0.80273zM52.77734,62.87305l-0.6875,0.57617l-0.08008,0.34375l-0.00586,0.09961l0.35742,0.82031l0.87305,0.20703l0.68555,-0.57617l0.08203,-0.34375l0.00586,-0.09961l-0.35937,-0.82227zM26.65625,62.9043l-0.61914,0.64648l-0.04492,0.34961l0.00586,0.09961l0.44531,0.77734l0.88867,0.11133l0.62109,-0.64648l0.04297,-0.34961l-0.00586,-0.09961l-0.44336,-0.7793zM39.7168,62.94141l-0.6543,0.61133l-0.0625,0.34766v0.09961l0.40234,0.80078l0.88086,0.1582l0.6543,-0.61133l0.0625,-0.34766v-0.09961l-0.40234,-0.80078z"></path></g></g>
+</svg>
+                   </a> &nbsp; &nbsp;
+                    
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </section>
+
+</div>
+        
+{% endblock %}
