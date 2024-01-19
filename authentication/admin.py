@@ -23,7 +23,7 @@ class MembersModelAdmin(admin.ModelAdmin):
             'member_email': obj.email,
             'member_password': obj.password
         }
-        html_message = render_to_string('mail-templates\member-login-credentials.html', context)
+        html_message = render_to_string('member-login-credentials.html', context)
         plain_message = strip_tags(html_message)
 
         send_mail(
